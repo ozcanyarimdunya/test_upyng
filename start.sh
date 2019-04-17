@@ -11,4 +11,4 @@ echo "... Applying Django collect static"
 python manage.py collectstatic --noinput
 
 echo "... Starting Django via gunicorn"
-gunicorn config.wsgi -b 0.0.0.0:8001 -w 4 --reload
+gunicorn config.wsgi -b 0.0.0.0:8000 -w 4 --reload

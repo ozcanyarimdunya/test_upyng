@@ -24,6 +24,6 @@ services:
     env_file:
       - .env
     ports:
-      - 80:80
+      - 8910:80
     volumes:
       - 'media_files:/app/assets/media'
