@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Upyng | Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{% static 'app/css/materialize.min.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static 'app/css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  {% block style %}
+    <style>
+      body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+
+      main {
+        flex: 1 0 auto;
+      }
+    </style>
+  {% endblock style %}
+</head>
+<body>
+
+{% include 'partials/_navbar.html' %}
+
+{% block content %}
+{% endblock content %}
+
+
+<!--  Scripts-->
+<script src="{% static 'app/js/jquery-3.3.1.slim.min.js' %}"></script>
+<script src="{% static 'app/js/materialize.js' %}"></script>
+<script src="{% static 'app/js/init.js' %}"></script>
+
+{% block script %}
+{% endblock script %}
+
+{% if form.errors %}
+  <script>
+    let error = '';
+    {% for field, errors in form.errors.items %}
+      {% for error in errors %}
+        error += ` '{{ field }}': {{ error }}`;
+      {% endfor %}
+    {% endfor %}
+
+    M.toast({html: error, classes:'red'});
+  </script>
+{% endif %}
+</body>
+</html>

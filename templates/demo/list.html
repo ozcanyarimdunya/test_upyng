@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+{% endblock style %}%}
+
+{% block content %}
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <ul class="collection">
+
+          {% for obj in object_list %}
+            <li class="collection-item avatar">
+              <img src="{{ obj.logo.url }}" alt="Logo" class="circle">
+              <span class="title">{{ obj.name }}</span>
+              <p>
+                <a href="{{ obj.document.url }}">{{ obj.document }}</a>
+              </p>
+              <a href="{{ obj.get_absolute_url }}" class="secondary-content">
+                <i class="material-icons">send</i>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <br><br>
+  </div>
+{% endblock content %}%}
+
+{% block script %}
+{% endblock script %}

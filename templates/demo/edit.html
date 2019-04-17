@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block style %}
+{% endblock style %}
+
+{% block content %}
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <h3 class="center">{{ object.name }}</h3>
+        <form class="col s12" method="post" enctype="multipart/form-data"> {% csrf_token %}
+
+          {% for field in form.visible_fields %}
+            <div class="row">
+              <label>{{ field.label_tag }}</label>
+              {% render_field field|add_class:"input-field col s12" %}
+            </div>
+          {% endfor %}
+          <div class="row">
+            <button type="submit" class="btn waves-effect waves-light blue btn-small">
+              <i class="material-icons right">save</i>Save
+            </button>
+
+            <a class="btn waves-effect waves-light black right btn-small" href="{% url 'demo:list' %}">
+              <i class="material-icons left">arrow_back</i>Back
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+    <br><br>
+  </div>
+{% endblock content %}
+
+{% block script %}
+{% endblock script %}

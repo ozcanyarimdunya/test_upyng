@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+{% endblock style %}
+
+{% block content %}
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <div class="col s12">
+          <h2 class="header">Delete {{ object.name }}?</h2>
+          <div class="card horizontal">
+            <div class="card-image">
+              <img src="{{ object.logo.url }}" height="300" width="200">
+            </div>
+            <div class="card-stacked">
+              <div class="card-content">
+                <ul class="collection">
+                  <li class="collection-item"><a href="{{ object.logo.url }}">{{ object.logo }}</a></li>
+                  <li class="collection-item"><a href="{{ object.document.url }}">{{ object.document }}</a></li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a class="btn waves-effect waves-light btn-small black right" href="{% url 'demo:list' %}">Back
+                  <i class="material-icons left">arrow_back</i>
+                </a>
+                <form method="post">
+                  {% csrf_token %}
+                  <button class="btn waves-effect waves-light btn-small red" type="submit">Delete
+                    <i class="material-icons right">delete</i>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <br><br>
+  </div>
+{% endblock content %}
+
+{% block script %}
+{% endblock script %}
